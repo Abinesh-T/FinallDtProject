@@ -1,5 +1,0 @@
-package com.eCommerce.BackEnd.Impl;
-
-public class CategoryDAOImpl {
-
-}
