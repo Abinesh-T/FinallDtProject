@@ -64,4 +64,16 @@ public class HomeController {
 		ModelAndView m10=new ModelAndView("Other_Category");
 		return m10;
 	}
+	@RequestMapping(value="/ProductAdding")
+	public ModelAndView ProductAdding()
+	{
+		ModelAndView m11=new ModelAndView("ProductAdding");
+		return m11;
+	}
+	@RequestMapping(value="/AddCategory")
+	public ModelAndView AddCategory()
+	{
+		ModelAndView m12=new ModelAndView("AddCategory");
+		return m12;
+	}
 }
