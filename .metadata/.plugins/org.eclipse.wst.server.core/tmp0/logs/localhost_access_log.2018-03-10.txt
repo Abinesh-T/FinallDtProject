@@ -1,0 +1,11 @@
+127.0.0.1 - - [10/Mar/2018:12:13:06 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:13:09 +0530] "GET /Ecommerce/ HTTP/1.1" 404 1014
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:13:38 +0530] "GET /Ecommerce/category HTTP/1.1" 404 1030
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:08 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:09 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:09 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:10 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:10 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:10 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:10 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
+0:0:0:0:0:0:0:1 - - [10/Mar/2018:12:14:11 +0530] "GET /Ecommerce/categorylist HTTP/1.1" 404 1038
