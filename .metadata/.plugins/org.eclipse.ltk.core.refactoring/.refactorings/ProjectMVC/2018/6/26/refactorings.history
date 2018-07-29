@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;WEB-INF&apos;&#x0D;&#x0A;- Original project: &apos;ProjectMVC&apos;&#x0D;&#x0A;- Destination element: &apos;WEB-INF&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     security-context.xml&#x0D;&#x0A;     servlet-context.xml&#x0D;&#x0A;     web.xml&#x0D;&#x0A;     root-context.xml" description="Copy files" element1="src/main/webapp/WEB-INF/security-context.xml" element2="src/main/webapp/WEB-INF/servlet-context.xml" element3="src/main/webapp/WEB-INF/web.xml" element4="src/main/webapp/WEB-INF/root-context.xml" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1530356315659" target="/SamundiAgencies/src/main/webapp/WEB-INF" units="0" version="1.0"/>
+</session>

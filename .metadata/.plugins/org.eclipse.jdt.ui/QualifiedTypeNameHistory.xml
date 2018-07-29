@@ -3,4 +3,15 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 <fullyQualifiedTypeName name="com.niit.Ecommerce_backend.DAO.CartDAO"/>
+<fullyQualifiedTypeName name="org.hibernate.Query"/>
+<fullyQualifiedTypeName name="model.UserDAO"/>
+<fullyQualifiedTypeName name="com.SA.model.ProductModel"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="org.apache.catalina.connector.Request"/>
+<fullyQualifiedTypeName name="com.model.CompanyExpense"/>
+<fullyQualifiedTypeName name="com.model.CompanyExpenseDAO"/>
+<fullyQualifiedTypeName name="com.model.ProductDAO"/>
+<fullyQualifiedTypeName name="com.model.Product"/>
+<fullyQualifiedTypeName name="com.model.CounterClosingDAO"/>
+<fullyQualifiedTypeName name="com.model.CounterClosing"/>
 </qualifiedTypeNameHistroy>

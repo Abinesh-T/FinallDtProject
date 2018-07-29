@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Techtronixs</title>
+</head>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<form action="CounterClosingSubmit" method="post">
+		<c:forEach items="${lp}" var="u">
+			<div class="form-group">
+			<label for="email">Name:</label> <input type="text"
+				class="form-control" id="Name"
+				placeholder="Enter Name" value="${u.getName() }" name="Name" required>
+		</div>
+		<div class="form-group">
+			<div>
+				<label for="pwd">OpeningStock:</label> <input type="text"
+					class="form-control" id="OpeningStock" placeholder="Enter OpeningStock"
+					name="OpeningStock"  required>
+			</div>
+			<div>
+				<label for="pwd">ClosingStock:</label> <input type="text"
+					class="form-control" id="ClosingStock" placeholder="Enter ClosingStock"
+					name="ClosingStock" required>
+			</div>
+		</div>
+</c:forEach>
+		<div class="col-sm-12 form-group">
+			<center>
+				<button type="submit" class="btn btn-lg btn-info">Submit</button>
+				<button type="reset" class="btn btn-lg btn-info">Clear</button>
+			</center>
+		</div>
+		
+	</form>
+
+	<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

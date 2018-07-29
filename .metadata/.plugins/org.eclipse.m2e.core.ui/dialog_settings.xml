@@ -33,6 +33,10 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\CDTJEJAVAPRG\CDTJEJAVA\Sri_Ananda"/>
+			<item value="D:\CDTJEJAVAPRG\CDTJEJAVA\OverSpeed"/>
+			<item value="D:\FinallDtProject\ProjectMVC-master"/>
+			<item value="D:\FinallDtProject\SpringMvcPdfViewDemo"/>
 			<item value="C:\Users\Karthigaivel\workspace\ProjectDemoEclipse\Ecommerce"/>
 			<item value="C:\Users\Karthigaivel\workspace\ProjectDemoEclipse\Ecommerce_backend"/>
 			<item value="D:\ProjectDT\FinallDtProject\FrontEnd"/>
@@ -72,13 +76,19 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.abi.SamundiAgencies"/>
+			<item value="com.com.Sri_Ananda"/>
 			<item value="com.eCommerce.BackEnd"/>
 			<item value="com.eCommerce.FrontEnd"/>
 		</list>
 		<list key="groupId">
+			<item value="com.abi"/>
+			<item value="com.com"/>
 			<item value="com.eCommerce"/>
 		</list>
 		<list key="artifactId">
+			<item value="SamundiAgencies"/>
+			<item value="Sri_Ananda"/>
 			<item value="BackEnd"/>
 			<item value="FrontEnd"/>
 		</list>
@@ -92,6 +102,7 @@
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>
+			<item value="1.0.0"/>
 		</list>
 	</section>
 </section>
