@@ -63,6 +63,15 @@ public class CounterClosingDAO {
 		return b;
 
 	}
+	public List<CounterClosing> getReportByDate(String Date) {
+		DbConfig db = new DbConfig();
+		sess = db.getSess();
+		String HQL_QUERY = "from CounterClosing u where u.Date=:Date";
+		Query query = sess.createQuery(HQL_QUERY, CounterClosing.class);
+		query.setParameter("Date", Date);
+		List<CounterClosing> list = query.list();
+		return list;
+	}
 	public List<CounterClosing> getReport(String fDate, String tDate) {
 		DbConfig db = new DbConfig();
 		sess = db.getSess();

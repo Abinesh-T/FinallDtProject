@@ -64,6 +64,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\FinallDtProject"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -76,6 +77,7 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.abi.Sri_Ananda"/>
 			<item value="com.abi.SamundiAgencies"/>
 			<item value="com.com.Sri_Ananda"/>
 			<item value="com.eCommerce.BackEnd"/>
@@ -87,8 +89,8 @@
 			<item value="com.eCommerce"/>
 		</list>
 		<list key="artifactId">
-			<item value="SamundiAgencies"/>
 			<item value="Sri_Ananda"/>
+			<item value="SamundiAgencies"/>
 			<item value="BackEnd"/>
 			<item value="FrontEnd"/>
 		</list>
@@ -101,6 +103,7 @@
 			<item value="[name]"/>
 		</list>
 		<list key="version">
+			<item value="1.0.1"/>
 			<item value="0.0.1-SNAPSHOT"/>
 			<item value="1.0.0"/>
 		</list>

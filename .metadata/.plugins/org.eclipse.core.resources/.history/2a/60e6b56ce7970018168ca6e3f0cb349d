@@ -1,0 +1,77 @@
+package com.model;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import com.model.OpenCounterClosing;
+
+public class OpenCounterClosingDAO {
+	private Transaction trans;
+	private Session sess;
+	private DbConfig db;
+	private boolean b = true;
+	public OpenCounterClosingDAO()
+	{
+		db = new DbConfig();
+	}
+	
+	public boolean insertOpenCounterClosing(OpenCounterClosing p) {
+		try
+		{
+			sess = db.getSess();
+			trans = sess.beginTransaction();
+			sess.save(p);
+			trans.commit();
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+			trans.rollback();
+			b = false;
+		}
+		return b;
+	}
+	public List<OpenCounterClosing> getOpenCounterClosings() {
+
+		sess = db.getSess();
+		Query<OpenCounterClosing> quer = sess.createQuery("FROM OpenCounterClosing", OpenCounterClosing.class);
+		List<OpenCounterClosing> al = quer.getResultList();
+		return al;
+	}
+	public static OpenCounterClosing findById(int id) {
+		DbConfig db = new DbConfig();
+		return (OpenCounterClosing)db.getSess().get(OpenCounterClosing.class,id);
+	}
+	
+	public boolean updateOpenCounterClosing(OpenCounterClosing p)
+	{
+		try
+		{
+		sess = db.getSess();
+		trans = sess.beginTransaction();
+		sess.update(p);
+		trans.commit();
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+			trans.rollback();
+			b = false;
+		}
+		return b;
+
+	}
+	public List<OpenCounterClosing> getReport(String fDate, String tDate) {
+		DbConfig db = new DbConfig();
+		sess = db.getSess();
+		String HQL_QUERY = "from OpenCounterClosing u where u.Date between :fDate and :tDate ";
+		Query query = sess.createQuery(HQL_QUERY, OpenCounterClosing.class);
+		query.setParameter("fDate", fDate);
+		query.setParameter("tDate", tDate);
+		List<OpenCounterClosing> list = query.list();
+		return list;
+	}
+
+}

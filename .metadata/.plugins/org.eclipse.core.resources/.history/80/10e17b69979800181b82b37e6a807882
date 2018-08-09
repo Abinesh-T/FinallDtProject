@@ -1,0 +1,176 @@
+package controller;
+
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import model.UserDAO;
+import model.UserModel;
+
+@Controller
+public class VechileController {
+
+	@RequestMapping(value = "/")
+	public ModelAndView indexPage() {
+		ModelAndView view = new ModelAndView("index");
+		return view;
+	}
+
+	@RequestMapping(value = "/index")
+	public ModelAndView UploadPage() {
+		ModelAndView view2 = new ModelAndView("index");
+		return view2;
+	}
+
+	@RequestMapping(value = "/Billing")
+	public ModelAndView IndexPage() {
+		ModelAndView view = new ModelAndView("Billing");
+		UserDAO ud = new UserDAO();
+		int u = ud.findId();
+		view.addObject("u", u);
+		return view;
+	}
+	@RequestMapping(value = "/login")
+	public ModelAndView login() {
+		ModelAndView view3 = new ModelAndView("login");
+		return view3;
+	}
+	@RequestMapping(value = "/InventoryByPeriod")
+	public ModelAndView InventoryByPeriod() {
+		ModelAndView view3 = new ModelAndView("InventoryByPeriod");
+		return view3;
+	}
+	@RequestMapping(value = "/InventoryByDate")
+	public ModelAndView InventoryByDate() {
+		ModelAndView view3 = new ModelAndView("InventoryByDate");
+		return view3;
+	}
+	@RequestMapping(value = "/submit")
+	public ModelAndView insertValue(HttpServletRequest request) throws ParseException {
+		String Name = request.getParameter("Name");
+		String Sample_Type = request.getParameter("Sample_Type");
+		String Weight = request.getParameter("Weight");
+		String Gold = request.getParameter("Gold");
+		String Silver = request.getParameter("Silver");
+		String Copper = request.getParameter("Copper");
+		String Zinc = request.getParameter("Zinc");
+		String KDM = request.getParameter("KDM");
+		String Nickel = request.getParameter("Nickel");
+		String Iridium = request.getParameter("Iridium");
+		String Tin = request.getParameter("Tin");
+		String Iron = request.getParameter("Iron");
+		String Karat = request.getParameter("Karat");
+		String Platinum=request.getParameter("Platinum");
+		String Others = request.getParameter("Others");
+		UserModel u = new UserModel();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		u.setDate(dtf.format(now));
+		u.setName(Name);
+		u.setSample_type(Sample_Type);
+		u.setWeight(Weight);
+		u.setKarat(Karat);
+		u.setGold(Gold);
+		u.setSilver(Silver);
+		u.setCopper(Copper);
+		u.setZinc(Zinc);
+		u.setKDM(KDM);
+		u.setNickel(Nickel);
+		u.setIridium(Iridium);
+		u.setTin(Tin);
+		u.setIron(Iron);
+		u.setPlatinum(Platinum);
+		u.setOthers(Others);
+		UserDAO user = new UserDAO();
+		user.insertValue(u);
+		ModelAndView view4 = new ModelAndView("submit");
+		view4.addObject("u", u);
+		return view4;
+	}
+
+	@RequestMapping(value = "/ReportByDate")
+	public ModelAndView ReportByDate(HttpServletRequest request) throws ParseException {
+		String Date = request.getParameter("Date");
+		UserDAO ud = new UserDAO();
+		List<UserModel> lp = ud.getReportbydate(Date);
+		ModelAndView view5 = new ModelAndView("Report");
+		view5.addObject("lp", lp);
+		return view5;
+
+	}
+	@RequestMapping(value = "/ReportByPeriod")
+	public ModelAndView ReportByPeriod(HttpServletRequest request) throws ParseException {
+		String fDate = request.getParameter("fDate");
+		String tDate = request.getParameter("tDate");
+		UserDAO ud = new UserDAO();
+		List<UserModel> lp = ud.getReport(fDate, tDate);
+		ModelAndView view5 = new ModelAndView("Report");
+		view5.addObject("lp", lp);
+		return view5;
+
+	}
+	@RequestMapping(value="/product_edit")
+	 
+	 public ModelAndView editProducts(HttpServletRequest request){	
+	 int id=Integer.parseInt(request.getParameter("id"));
+	 ModelAndView mv=new ModelAndView("EditPage");
+	 mv.addObject("u",UserDAO.findById(id) );	
+	 return mv;
+	}
+	 @RequestMapping(value = "/product_update", method = RequestMethod.POST)
+	   public  ModelAndView updateProduct(HttpServletRequest request) 
+	   { 
+		int Userid=Integer.valueOf(request.getParameter("Userid"));
+	   	String Name = request.getParameter("Name");
+		String Sample_Type = request.getParameter("Sample_Type");
+		String Weight = request.getParameter("Weight");
+		String Karat = request.getParameter("Karat");
+		String Gold = request.getParameter("Gold");
+		String Silver = request.getParameter("Silver");
+		String Copper = request.getParameter("Copper");
+		String Zinc = request.getParameter("Zinc");
+		String KDM = request.getParameter("KDM");
+		String Nickel = request.getParameter("Nickel");
+		String Iridium = request.getParameter("Iridium");
+		String Tin = request.getParameter("Tin");
+		String Iron = request.getParameter("Iron");
+		String Platinum=request.getParameter("Platinum");
+		String Others = request.getParameter("Others");
+		
+		UserModel u = new UserModel();
+		u.setUserid(Userid);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		u.setDate(dtf.format(now));
+		u.setName(Name);
+		u.setSample_type(Sample_Type);
+		u.setWeight(Weight);
+		u.setKarat(Karat);
+		u.setGold(Gold);
+		u.setSilver(Silver);
+		u.setCopper(Copper);
+		u.setZinc(Zinc);
+		u.setKDM(KDM);
+		u.setNickel(Nickel);
+		u.setIridium(Iridium);
+		u.setTin(Tin);
+		u.setIron(Iron);
+		u.setPlatinum(Platinum);
+		u.setOthers(Others);
+		UserDAO user = new UserDAO();
+		user.update(u);
+		ModelAndView mv = new ModelAndView("submit");
+		mv.addObject("u", u);
+	   	return mv;
+	      
+	   }
+	
+}

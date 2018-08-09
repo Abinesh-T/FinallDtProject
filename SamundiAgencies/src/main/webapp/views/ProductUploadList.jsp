@@ -33,41 +33,56 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+<style type="text/css">
+@media print {
+	* {
+		display: none;
+	}
+	#printableTable {
+		display: block;
+	}
+}
+</style>
 
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<br>
 	<br>
-	<h2 align="center">Reports</h2>
-	<table class="table table-striped table-bordered dt-responsive nowrap">
-
-		<thead>
-			<tr>
-				<th>Actions</th>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Cost</th>
-				<th>BillingRate</th>
-				<th>RetailerBillingRate</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<c:forEach items="${lp}" var="u">
+	<div id="printableTable">
+		<h2 align="center">Reports</h2>
+		<table class="table table-striped table-bordered dt-responsive nowrap">
+			<thead>
 				<tr>
-					<td><a class="fa fa-pencil-square-o"
-						href="./ProductEdit?id=${u.id}"> </a></td>
-					<td>${u.getId() }</td>
-					<td>${u.getName() }</td>
-					<td>${u.getCost() }</td>
-					<td>${u.getBillingRate() }</td>
-					<td>${u.getRetailerBillingRate() }</td>
+					<th>Actions</th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Cost</th>
+					<th>BillingRate</th>
+					<th>RetailerBillingRate</th>
 				</tr>
-			</c:forEach>
-		</tbody>
+			</thead>
 
-	</table>
+			<tbody>
+				<c:forEach items="${lp}" var="u">
+					<tr>
+						<td><a class="fa fa-pencil-square-o"
+							href="./ProductEdit?id=${u.id}"> </a></td>
+						<td>${u.getId() }</td>
+						<td>${u.getName() }</td>
+						<td>${u.getCost() }</td>
+						<td>${u.getBillingRate() }</td>
+						<td>${u.getRetailerBillingRate() }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<iframe name="print_frame" width="0" height="0" frameborder="0"
+		src="about:blank"></iframe>
+	<center>
+		<button class="btn btn-lg btn-info" onclick="printDiv()">Print</button>
+	</center>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		crossorigin="anonymous"></script>
@@ -80,6 +95,14 @@
 		$(document).ready(function() {
 			$('.table').DataTable();
 		});
+	</script>
+	<script type="text/javascript">
+		function printDiv() {
+			window.frames["print_frame"].document.body.innerHTML = document
+					.getElementById("printableTable").innerHTML;
+			window.frames["print_frame"].window.focus();
+			window.frames["print_frame"].window.print();
+		}
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

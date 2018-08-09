@@ -60,7 +60,7 @@
 					<li><a href="IceBalance" style="font-size: 20px;">Enter_IceBalance</a></li>
 					<li><a href="ReportIceBalanceFilter" style="font-size: 20px;">Report_IceBalance</a></li>
 				</ul></li>
-				<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
+			<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 				style="font-size: 20px; color: white">RetailerUpload<span
 					class="caret"></span></a>
@@ -68,7 +68,7 @@
 					<li><a href="RetailerUpload" style="font-size: 20px;">Enter_Retailer</a></li>
 					<li><a href="RetailerList" style="font-size: 20px;">Report_Retailer</a></li>
 				</ul></li>
-				<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
+			<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 				style="font-size: 20px; color: white">ProductUpload<span
 					class="caret"></span></a>
@@ -76,13 +76,31 @@
 					<li><a href="ProductUpload" style="font-size: 20px;">Enter_ProductUpload</a></li>
 					<li><a href="ProductUploadList" style="font-size: 20px;">Report_Product</a></li>
 				</ul></li>
-				<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
+			<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 				style="font-size: 20px; color: white">CounterClosing<span
 					class="caret"></span></a>
 				<ul class="dropdown-menu">
+					<li><a href="OpenCounterClosingUpload"
+						style="font-size: 20px;">Enter_OpenCounterClosing</a></li>
 					<li><a href="CounterClosingUpload" style="font-size: 20px;">Enter_CounterClosing</a></li>
-					<li><a href="CounterClosingList" style="font-size: 20px;">Report_CounterClosing</a></li>
+					<li><a href="CounterClosingListByDate"
+						style="font-size: 20px;">Report_CounterClosingByDate</a></li>
+					<li><a href="CounterClosingListByPeriod"
+						style="font-size: 20px;">Report_CounterClosingByPeriod</a></li>
+				</ul></li>
+			<li class="dropdown"><a href="Cmpny_Exp" class="dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				style="font-size: 20px; color: white">RetailerClosing<span
+					class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="OpenRetailerClosingUpload"
+						style="font-size: 20px;">Enter_OpenRetailerClosing</a></li>
+					<li><a href="RetailerClosingUpload" style="font-size: 20px;">Enter_RetailerClosing</a></li>
+					<li><a href="RetailerClosingListByDate"
+						style="font-size: 20px;">Report_RetailerClosingByDate</a></li>
+					<li><a href="RetailerClosingListByPeriod"
+						style="font-size: 20px;">Report_RetailerClosingByPeriod</a></li>
 				</ul></li>
 		</ul>
 		<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">

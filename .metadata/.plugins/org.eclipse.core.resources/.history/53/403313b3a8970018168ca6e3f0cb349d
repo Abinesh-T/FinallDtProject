@@ -1,0 +1,108 @@
+package com.model;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+public class CounterClosingDAO {
+
+	private Transaction trans;
+	private Session sess;
+	private DbConfig db;
+	private boolean b = true;
+	
+	public CounterClosingDAO()
+	{
+		db = new DbConfig();
+	}
+	
+	public boolean insertCounterClosing(CounterClosing p) {
+		
+		try
+		{
+			sess = db.getSess();
+			trans = sess.beginTransaction();
+			String[] Names = p.getName().split(",");
+			String[] OpeningStocks = p.getOpeningStock().split(",");
+			String[] ClosingStocks = p.getClosingStock().split(",");
+			for (String name : Names)
+			{
+				
+				p.setName(name);
+				sess.save(p);
+				sess.flush();
+				sess.clear();
+
+			}
+			for (String OpeningStock : OpeningStocks)
+			{
+				p.setOpeningStock(OpeningStock);
+				sess.save(p);
+				sess.flush();
+				sess.clear();
+
+			}
+			for (String ClosingStock : ClosingStocks)
+			{
+				p.setClosingStock(ClosingStock);
+				sess.save(p);
+				sess.flush();
+				sess.clear();
+
+			}
+			trans.commit();
+			sess.close();
+			
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+			trans.rollback();
+			b = false;
+		}
+		return b;
+	}
+	public List<CounterClosing> getCounterClosings() {
+
+		sess = db.getSess();
+		Query<CounterClosing> quer = sess.createQuery("FROM CounterClosing", CounterClosing.class);
+		List<CounterClosing> al = quer.getResultList();
+		return al;
+	}
+	public static CounterClosing findById(int id) {
+		DbConfig db = new DbConfig();
+		return (CounterClosing)db.getSess().get(CounterClosing.class,id);
+	}
+	
+	public boolean updateCounterClosing(CounterClosing p)
+	{
+		try
+		{
+		sess = db.getSess();
+		trans = sess.beginTransaction();
+		sess.update(p);
+		trans.commit();
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+			trans.rollback();
+			b = false;
+		}
+		return b;
+
+	}
+	public List<CounterClosing> getReport(String fDate, String tDate) {
+		DbConfig db = new DbConfig();
+		sess = db.getSess();
+		String HQL_QUERY = "from CounterClosing u where u.Date between :fDate and :tDate ";
+		Query query = sess.createQuery(HQL_QUERY, CounterClosing.class);
+		query.setParameter("fDate", fDate);
+		query.setParameter("tDate", tDate);
+		List<CounterClosing> list = query.list();
+		return list;
+	}
+
+}

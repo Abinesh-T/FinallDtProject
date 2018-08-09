@@ -105,11 +105,11 @@ a.socialIcon:hover, .socialHoverClass {
 
     			<div class="col-md-12">
                     <ul class="social-network social-circle">
-                        <li><a href="#" class="icoRss" title="Rss" style="background-color: #D3D3D4"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#" class="icoFacebook" title="Facebook" style="background-color: #D3D3D4"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter" style="background-color: #D3D3D4"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/techtronixs/" class="icoRss" title="Instagram" style="background-color: #D3D3D4"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="https://www.facebook.com/techtronixs.softwares.14" class="icoFacebook" title="Facebook" style="background-color: #D3D3D4"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/TechtronixsS" class="icoTwitter" title="Twitter" style="background-color: #D3D3D4"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#" class="icoGoogle" title="Google +" style="background-color: #D3D3D4"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin" style="background-color: #D3D3D4"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/techtronixs-softwares-391959169/" class="icoLinkedin" title="Linkedin" style="background-color: #D3D3D4"><i class="fa fa-linkedin"></i></a></li>
                     </ul>				
 				</div>
 

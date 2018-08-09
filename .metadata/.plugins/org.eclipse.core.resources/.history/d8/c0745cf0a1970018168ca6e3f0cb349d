@@ -1,0 +1,46 @@
+package com.model;
+
+
+public class CounterClosing {
+	
+	private String Date;
+	private String Name;
+	private String OpeningStock;
+	private String ClosingStock;
+	private int Sold;
+	
+	public int getSold() {
+		return Sold;
+	}
+	
+	public String getDate() {
+		return Date;
+	}
+	
+	public void setDate(String date) {
+		Date = date;
+	}
+	public void setSold(int sold) {
+		Sold = sold;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getOpeningStock() {
+		return OpeningStock;
+	}
+	public void setOpeningStock(String openingStock) {
+		OpeningStock = openingStock;
+	}
+	public String getClosingStock() {
+		return ClosingStock;
+	}
+	public void setClosingStock(String closingStock) {
+		ClosingStock = closingStock;
+	}
+	
+
+}

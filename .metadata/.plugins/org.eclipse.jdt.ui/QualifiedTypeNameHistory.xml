@@ -13,5 +13,9 @@
 <fullyQualifiedTypeName name="com.model.ProductDAO"/>
 <fullyQualifiedTypeName name="com.model.Product"/>
 <fullyQualifiedTypeName name="com.model.CounterClosingDAO"/>
+<fullyQualifiedTypeName name="com.model.CounterClosingList"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="com.model.CounterClosing"/>
+<fullyQualifiedTypeName name="com.model.RetailerClosing"/>
+<fullyQualifiedTypeName name="com.model.RetailerClosingDAO"/>
 </qualifiedTypeNameHistroy>

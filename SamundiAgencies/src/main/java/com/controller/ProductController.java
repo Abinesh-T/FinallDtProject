@@ -19,6 +19,8 @@ import com.model.CounterClosingDAO;
 import com.model.IceBalanceDAO;
 import com.model.Product;
 import com.model.ProductDAO;
+import com.model.RetailerClosing;
+import com.model.RetailerClosingDAO;
 import com.model.IceBalance;
 import com.model.RetailerMgmt;
 import com.model.RetailerMgmtDAO;
@@ -251,28 +253,220 @@ public class ProductController {
 
 		return mv1;
 	}
-	@RequestMapping(value = "/CounterClosingUpload", method = RequestMethod.GET)
-	public ModelAndView CounterClosingUpload() {
 
-		ModelAndView view3 = new ModelAndView("CounterClosingUpload");
+	@RequestMapping(value = "/OpenCounterClosingUpload", method = RequestMethod.GET)
+	public ModelAndView OpenCounterClosingUpload() {
+
+		ModelAndView view3 = new ModelAndView("OpenCounterClosingUpload");
 		ProductDAO ud = new ProductDAO();
 		List<Product> lp = ud.getProducts();
 		view3.addObject("lp", lp);
 		return view3;
 	}
-	@RequestMapping(value = "/CounterClosingSubmit")
-	public ModelAndView CounterClosingSubmit(CounterClosing CounterClosing,HttpServletRequest request, Principal p) throws Exception {
-		String Name=request.getParameter("Name");
-		Integer OS=Integer.parseInt(request.getParameter("OpeningStock"));
-		Integer CS=Integer.parseInt(request.getParameter("ClosingStock"));
-		int Sold=OS-CS;
-		ModelAndView mv1 = new ModelAndView("CounterClosingUpload");
+	@RequestMapping(value = "/OpenCounterClosingSubmit")
+	public ModelAndView OpenCounterClosingSubmit(CounterClosing CounterClosing,HttpServletRequest request, Principal p) throws Exception {
+		ModelAndView mv1 = new ModelAndView("index");
+		
+		String[] names = CounterClosing.getName().split(",");
+		String[] OpeningStocks = CounterClosing.getOpeningStock().split(",");
+		String[] ClosingStocks = CounterClosing.getClosingStock().split(",");
+		int i=-1;
+		for (String name : names)
+		{
+		i++;	
+		int os=Integer.parseInt(OpeningStocks[i]);
+		int cs=Integer.parseInt(ClosingStocks[i]);
+		int sold=os-cs;
 		CounterClosingDAO pd = new CounterClosingDAO();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDateTime now = LocalDateTime.now();
 		CounterClosing.setDate(dtf.format(now));
-		CounterClosing.setSold(Sold);
+		CounterClosing.setName(name);
+		CounterClosing.setOpeningStock(OpeningStocks[i]);
+		CounterClosing.setClosingStock(ClosingStocks[i]);
+		CounterClosing.setSold(sold);
 		pd.insertCounterClosing(CounterClosing);
+		
+		}
 		return mv1;
 	}
+	@RequestMapping(value = "/CounterClosingUpload", method = RequestMethod.GET)
+	public ModelAndView CounterClosingUpload() {
+
+		ModelAndView view3 = new ModelAndView("CounterClosingUpload");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		String Date=dtf.format(now);
+		CounterClosingDAO ud = new CounterClosingDAO();
+		List<CounterClosing> lp = ud.getReportByDate(Date);
+		view3.addObject("lp", lp);
+		return view3;
+	}
+	@RequestMapping(value = "/CounterClosingSubmit")
+	public ModelAndView CounterClosingSubmit(CounterClosing CounterClosing,HttpServletRequest request, Principal p) throws Exception {
+		ModelAndView mv1 = new ModelAndView("index");
+		
+		String[] names = CounterClosing.getName().split(",");
+		String[] OpeningStocks = CounterClosing.getOpeningStock().split(",");
+		String[] ClosingStocks = CounterClosing.getClosingStock().split(",");
+		int i=-1;
+		for (String name : names)
+		{
+		i++;	
+		int os=Integer.parseInt(OpeningStocks[i]);
+		int cs=Integer.parseInt(ClosingStocks[i]);
+		int sold=os-cs;
+		CounterClosingDAO pd = new CounterClosingDAO();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		CounterClosing.setDate(dtf.format(now));
+		CounterClosing.setName(name);
+		CounterClosing.setOpeningStock(OpeningStocks[i]);
+		CounterClosing.setClosingStock(ClosingStocks[i]);
+		CounterClosing.setSold(sold);
+		pd.insertCounterClosing(CounterClosing);
+		
+		}
+		return mv1;
+	}
+	@RequestMapping(value = "/CounterClosingListByDate", method = RequestMethod.GET)
+	public ModelAndView CounterClosingListByDate() {
+
+		ModelAndView view3 = new ModelAndView("CounterClosingListByDate");
+		return view3;
+	}
+	@RequestMapping(value = "/CounterClosingListByDateSubmit")
+	public ModelAndView CounterClosingListByDateSubmit(HttpServletRequest request) {
+
+		ModelAndView view3 = new ModelAndView("CounterClosingReport");
+		String Date = request.getParameter("Date");
+		CounterClosingDAO ud = new CounterClosingDAO();
+		List<CounterClosing> lp = ud.getReportByDate(Date);
+		view3.addObject("lp", lp);
+		return view3;
+	}
+	@RequestMapping(value = "/CounterClosingListByPeriod")
+	public ModelAndView CounterClosingListByPeriod() {
+
+		ModelAndView view3 = new ModelAndView("CounterClosingListByPeriod");
+		return view3;
+	}
+	@RequestMapping(value = "/CounterClosingListByPeriodSubmit")
+	public ModelAndView CounterClosingListByPeriodSubmit(HttpServletRequest request) throws Exception {
+		ModelAndView mv3 = new ModelAndView("CounterClosingReport");
+		String fDate = request.getParameter("fDate");
+		String tDate = request.getParameter("tDate");
+		CounterClosingDAO ud = new CounterClosingDAO();
+		List<CounterClosing> lp = ud.getReport(fDate, tDate);
+		mv3.addObject("lp", lp);
+		return mv3;
+	}
+	@RequestMapping(value = "/OpenRetailerClosingUpload", method = RequestMethod.GET)
+	public ModelAndView OpenRetailerClosingUpload() {
+
+		ModelAndView view3 = new ModelAndView("OpenRetailerClosingUpload");
+		ProductDAO ud = new ProductDAO();
+		List<Product> lp = ud.getProducts();
+		view3.addObject("lp", lp);
+		return view3;
+	}
+	@RequestMapping(value = "/OpenRetailerClosingSubmit")
+	public ModelAndView OpenRetailerClosingSubmit(RetailerClosing RetailerClosing,HttpServletRequest request, Principal p) throws Exception {
+		ModelAndView mv1 = new ModelAndView("index");
+		
+		String[] names = RetailerClosing.getName().split(",");
+		String[] OpeningStocks = RetailerClosing.getOpeningStock().split(",");
+		String[] ClosingStocks = RetailerClosing.getClosingStock().split(",");
+		int i=-1;
+		for (String name : names)
+		{
+		i++;	
+		int os=Integer.parseInt(OpeningStocks[i]);
+		int cs=Integer.parseInt(ClosingStocks[i]);
+		int sold=os-cs;
+		RetailerClosingDAO pd = new RetailerClosingDAO();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		RetailerClosing.setDate(dtf.format(now));
+		RetailerClosing.setName(name);
+		RetailerClosing.setOpeningStock(OpeningStocks[i]);
+		RetailerClosing.setClosingStock(ClosingStocks[i]);
+		RetailerClosing.setSold(sold);
+		pd.insertRetailerClosing(RetailerClosing);
+		
+		}
+		return mv1;
+	}
+	@RequestMapping(value = "/RetailerClosingUpload", method = RequestMethod.GET)
+	public ModelAndView RetailerClosingUpload() {
+
+		ModelAndView view3 = new ModelAndView("RetailerClosingUpload");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		String Date=dtf.format(now);
+		RetailerClosingDAO ud = new RetailerClosingDAO();
+		List<RetailerClosing> lp = ud.getReportByDate(Date);
+		view3.addObject("lp", lp);
+		return view3;
+	}
+	@RequestMapping(value = "/RetailerClosingSubmit")
+	public ModelAndView RetailerClosingSubmit(RetailerClosing RetailerClosing,HttpServletRequest request, Principal p) throws Exception {
+		ModelAndView mv1 = new ModelAndView("index");
+		
+		String[] names = RetailerClosing.getName().split(",");
+		String[] OpeningStocks = RetailerClosing.getOpeningStock().split(",");
+		String[] ClosingStocks = RetailerClosing.getClosingStock().split(",");
+		int i=-1;
+		for (String name : names)
+		{
+		i++;	
+		int os=Integer.parseInt(OpeningStocks[i]);
+		int cs=Integer.parseInt(ClosingStocks[i]);
+		int sold=os-cs;
+		RetailerClosingDAO pd = new RetailerClosingDAO();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		RetailerClosing.setDate(dtf.format(now));
+		RetailerClosing.setName(name);
+		RetailerClosing.setOpeningStock(OpeningStocks[i]);
+		RetailerClosing.setClosingStock(ClosingStocks[i]);
+		RetailerClosing.setSold(sold);
+		pd.insertRetailerClosing(RetailerClosing);
+		
+		}
+		return mv1;
+	}
+	@RequestMapping(value = "/RetailerClosingListByDate", method = RequestMethod.GET)
+	public ModelAndView RetailerClosingListByDate() {
+
+		ModelAndView view3 = new ModelAndView("RetailerClosingListByDate");
+		return view3;
+	}
+	@RequestMapping(value = "/RetailerClosingListByDateSubmit")
+	public ModelAndView RetailerClosingListByDateSubmit(HttpServletRequest request) {
+
+		ModelAndView view3 = new ModelAndView("RetailerClosingReport");
+		String Date = request.getParameter("Date");
+		RetailerClosingDAO ud = new RetailerClosingDAO();
+		List<RetailerClosing> lp = ud.getReportByDate(Date);
+		view3.addObject("lp", lp);
+		return view3;
+	}
+	@RequestMapping(value = "/RetailerClosingListByPeriod")
+	public ModelAndView RetailerClosingListByPeriod() {
+
+		ModelAndView view3 = new ModelAndView("RetailerClosingListByPeriod");
+		return view3;
+	}
+	@RequestMapping(value = "/RetailerClosingListByPeriodSubmit")
+	public ModelAndView RetailerClosingListByPeriodSubmit(HttpServletRequest request) throws Exception {
+		ModelAndView mv3 = new ModelAndView("RetailerClosingReport");
+		String fDate = request.getParameter("fDate");
+		String tDate = request.getParameter("tDate");
+		RetailerClosingDAO ud = new RetailerClosingDAO();
+		List<RetailerClosing> lp = ud.getReport(fDate, tDate);
+		mv3.addObject("lp", lp);
+		return mv3;
+	}
+
 }

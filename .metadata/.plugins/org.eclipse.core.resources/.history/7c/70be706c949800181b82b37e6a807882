@@ -1,0 +1,41 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<http auto-config="true">
+		<intercept-url pattern="/Billing" access="isAuthenticated()" />
+		<intercept-url pattern="/InventoryByDate" access="isAuthenticated()" />
+		<intercept-url pattern="/InventoryByPeriod" access="isAuthenticated()" />
+		<form-login login-page="/login" />
+		<logout logout-success-url="/" />
+		<access-denied-handler error-page="/access-denied" />
+		<csrf disabled="true" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="sha-256" />
+			<user-service>
+				<user name="abinesh"
+					password="a19de6eeff93c117d724e7d4ea590ccb84bca2190402b4e3d2408af19d9a8cd4"
+					authorities="ROLE_ADMIN" />
+				<user name="sabari"
+					password="1a786e108f0b13aae415f1f9ae5c3c826e51f89c65ad55348cdeefb9491dafbf"
+					authorities="ROLE_ADMIN" />
+				<user name="revathi"
+					password="dc5d2da0f019cb2127bc233ae76338fe312601fb4297cfdddaf52914a5d78246"
+					authorities="ROLE_USER" />
+
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>
+  
+  
+  
+  
+  
+  

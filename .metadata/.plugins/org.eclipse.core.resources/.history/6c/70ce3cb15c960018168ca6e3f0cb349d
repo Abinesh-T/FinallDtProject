@@ -1,0 +1,62 @@
+package com.model;
+
+import java.time.format.DateTimeFormatter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class CounterClosing {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int Id;
+	private String Date;
+	private String Name;
+	private String OpeningStock;
+	private String ClosingStock;
+	private int Sold;
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+	public int getSold() {
+		return Sold;
+	}
+	
+	public String getDate() {
+		return Date;
+	}
+	
+	public void setDate(String date) {
+		Date = date;
+	}
+	public void setSold(int sold) {
+		Sold = sold;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getOpeningStock() {
+		return OpeningStock;
+	}
+	public void setOpeningStock(String openingStock) {
+		OpeningStock = openingStock;
+	}
+	public String getClosingStock() {
+		return ClosingStock;
+	}
+	public void setClosingStock(String closingStock) {
+		ClosingStock = closingStock;
+	}
+	
+
+}

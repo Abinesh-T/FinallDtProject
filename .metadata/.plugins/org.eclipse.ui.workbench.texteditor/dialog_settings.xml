@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="CounterClosing" key="selection"/>
+		<item value="RetailerClosing" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="CounterClosing"/>
 			<item value="IceBalance"/>
 			<item value="RetailerClosingStock"/>
 			<item value="BillingRate"/>
@@ -15,9 +16,9 @@
 			<item value="IceBalanceDAO"/>
 			<item value="TotalSales"/>
 			<item value="Diesel"/>
-			<item value="Salary"/>
 		</list>
 		<list key="replacehistory">
+			<item value="RetailerClosing"/>
 			<item value="CounterClosing"/>
 			<item value="Sold"/>
 			<item value="ClosingStock"/>
@@ -25,7 +26,6 @@
 			<item value="Product"/>
 			<item value="ProductDAO"/>
 			<item value="BillingRate"/>
-			<item value="RetailerBillingRate"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
